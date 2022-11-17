@@ -2,6 +2,8 @@ import {traverseTree} from 'ajv-errors-to-data-tree/src/helpers.js'
 import * as m from './messages.js'
 
 function isValidBadInputTree(tree) {
+    if (!Array.isArray(tree.errors) && !tree.node) return false
+    
     try {
         traverseTree(tree, (e) => {
             // console.log("isValidBadInputTree, traversingTree, e:", e);
