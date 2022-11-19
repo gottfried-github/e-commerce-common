@@ -60,6 +60,13 @@ const InvalidCriterion = new Message(12, (o, message, data) => {
     return o
 })
 
+// i.e., http 409
+const ResourceExists = new Message(13, (o, message, data) => {
+    o.message = message || null
+    o.data = data || null
+    return o
+})
+
 // error format violates the spec, outlined in docs
 const InvalidErrorFormat = new Message(8, (o) => {
     o.message = "error format violates specification"
@@ -76,6 +83,7 @@ export {
     ValidationError,
     ResourceNotFound,
     InvalidCriterion,
+    ResourceExists,
     FieldUnknown,
-    InvalidErrorFormat
+    InvalidErrorFormat,
 }
