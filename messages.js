@@ -42,9 +42,10 @@ const EmptyError = new Message(5, (o, message) => {
 })
 
 // The type is correct, the value is not empty, but violates additionally defined validation rules
-const ValidationError = new Message(10, (o, message, data) => {
+const ValidationError = new Message(10, (o, message, tree, data) => {
     o.message = message || null
-    o.data = data
+    o.tree = tree || null
+    o.data = data || null
     return o
 })
 
@@ -57,6 +58,14 @@ const ResourceNotFound = new Message(6, (o, message) => {
 const InvalidCriterion = new Message(12, (o, message, data) => {
     o.message = message || null
     o.data = data
+    return o
+})
+
+// i.e., http 409
+const ResourceExists = new Message(13, (o, message, tree, data) => {
+    o.message = message || null
+    o.tree = tree || null
+    o.data = data || null
     return o
 })
 
@@ -76,6 +85,7 @@ export {
     ValidationError,
     ResourceNotFound,
     InvalidCriterion,
+    ResourceExists,
     FieldUnknown,
-    InvalidErrorFormat
+    InvalidErrorFormat,
 }
