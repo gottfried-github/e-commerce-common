@@ -1,0 +1,22 @@
+services:
+    base:
+        image: mongo
+        volumes: 
+            - ../data:/data/db
+        ports: 
+            - 27017:27017
+        command:
+            '--replSet rs0 --keyFile /data/db/keyfile --bind_ip base --dbpath /data/db'
+    node:
+        build: 
+            context: .
+            dockerfile: ./run.Dockerfile
+        volumes:
+            - ..:/app
+        environment: 
+            APP_DB_USER: app
+            # the same as APP_PSSWD in the init service of init-db.docker-compose.yml
+            APP_DB_PASS: piuewfohjberyu
+            APP_DB_NAME: app
+            NET_NAME: base
+            SESSION_SECRETS: 893yh4gppiuh34
