@@ -6,4 +6,4 @@ ENV APP_DB_NAME a
 ENV NET_NAME a
 ENV SESSION_SECRETS a
 
-CMD ["bash", "-c", "node /app/fi-app/index.js"]
+CMD ["bash", "-c", "node /app/e-commerce-app/index.js"]

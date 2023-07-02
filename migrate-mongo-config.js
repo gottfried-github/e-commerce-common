@@ -16,7 +16,7 @@ const config = {
   },
 
   // The migrations dir, can be an relative or absolute path. Only edit this when really necessary.
-  migrationsDir: "/app/fi-mongo/migrations", // fi-mongo
+  migrationsDir: "/app/e-commerce-mongo/migrations", // fi-mongo
 
   // The mongodb collection where the applied changes are stored. Only edit this when really necessary.
   changelogCollectionName: "changelog",
