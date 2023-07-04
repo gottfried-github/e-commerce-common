@@ -13,6 +13,8 @@ services:
             dockerfile: ./run.Dockerfile
         volumes:
             - ..:/app
+        ports:
+            - 3000:3000
         environment: 
             APP_DB_USER: app
             # the same as APP_PSSWD in the init service of init-db.docker-compose.yml
