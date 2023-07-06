@@ -9,4 +9,4 @@ ENV NET_NAME a
 
 COPY init-db.sh /init-db.sh
 
-CMD ["bash", "-c", "sleep 1m && /init-db.sh"]
+CMD ["bash", "-c", "/init-db.sh"]

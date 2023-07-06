@@ -3,10 +3,16 @@ services:
         image: mongo
         volumes: 
             - ../data:/data/db
+            - .:/e-commerce-common
         ports: 
             - 27017:27017
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: asdopihjwefpiub
         command:
             '--replSet rs0 --keyFile /data/db/keyfile --bind_ip base --dbpath /data/db'
+        healthcheck:
+            test: ["CMD", "bash", "-c", "/e-commerce-common/healthcheck.sh"]
     node:
         build: 
             context: .
@@ -26,3 +32,6 @@ services:
             USER_NAME: username00
             USER_PSSWD: ppiub43fnb34t
             USER_EMAIL: username00@mail.com
+        depends_on:
+            base: 
+                condition: service_healthy
