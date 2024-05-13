@@ -6,4 +6,6 @@ ENV APP_DB_NAME a
 ENV NET_NAME a
 ENV SESSION_SECRETS a
 
-CMD ["bash", "-c", "node /app/e-commerce-app/index.js"]
+RUN npm i -g nodemon
+
+CMD ["bash", "-c", "cd /app/e-commerce-app/ && nodemon --max_old_space_size=4096 index.js"]
