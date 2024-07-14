@@ -8,4 +8,4 @@ ENV SESSION_SECRETS a
 
 RUN npm i -g nodemon
 
-CMD ["bash", "-c", "cd /app/e-commerce-app/ && nodemon --max_old_space_size=4096 index.js"]
+CMD ["bash", "-c", "cd /app/e-commerce-app/ && nodemon --max_old_space_size=4096 --env-file .env index.js"]
