@@ -3,9 +3,9 @@
 cd ../e-commerce-app
 
 version=$(npm version | grep e-commerce-app | grep -o "'[^']\+',$" | grep -o "[^',]*")
-today=$(date +"%Y-%m-%d")
+now=$(date +"%Y-%m-%d-%H:%M")
 
-dirname="e-commerce-app@${version}_${today}"
+dirname="e-commerce-app@${version}_${now}"
 
 mkdir ../backup/uploads/$dirname
 
