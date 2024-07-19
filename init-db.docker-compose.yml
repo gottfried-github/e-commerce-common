@@ -7,8 +7,8 @@ services:
         ports: 
             - 27017:27017
         environment:
-            MONGO_INITDB_ROOT_USERNAME: admin
-            MONGO_INITDB_ROOT_PASSWORD: asdopihjwefpiub
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
         command:
             '--replSet rs0 --keyFile /data/db/keyfile --bind_ip base --dbpath /data/db'
         healthcheck:
@@ -20,14 +20,14 @@ services:
             dockerfile: ./init-db.Dockerfile
         environment:
             # same as MONGO_INITDB_ROOT_USERNAME and MONGO_INITDB_ROOT_PASSWORD env vars in base
-            ADMIN_USER: admin
-            ADMIN_PSSWD: asdopihjwefpiub
+            ADMIN_USER: ${MONGO_INITDB_ROOT_USERNAME}
+            ADMIN_PSSWD: ${MONGO_INITDB_ROOT_PASSWORD}
             
             # credentials for the db user
-            APP_USER: app
-            APP_PSSWD: piuewfohjberyu
+            APP_USER: ${APP_DB_USER}
+            APP_PSSWD: ${APP_DB_PASS}
             
-            DB_NAME: app
+            DB_NAME: ${APP_DB_NAME}
             NET_NAME: base
         depends_on:
             base: 
